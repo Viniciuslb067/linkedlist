@@ -3,6 +3,10 @@ public class Element {
     private String value;
     private Element next;
 
+    public Element (String newElement) {
+        this.value = newElement;
+    }
+
     public String getValue() {
         return value;
     }
