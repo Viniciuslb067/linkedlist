@@ -1,10 +1,10 @@
-public class LinkedList<T> {
+public class List<T> {
 
     private Element<T> first;
     private Element<T> last;
     private int length;
 
-    public LinkedList() {
+    public List() {
         this.length = 0;
     }
 
@@ -94,12 +94,12 @@ public class LinkedList<T> {
         return a;
     }
 
-    public Element insert(int value, Element<T> node) {
+    public Element insert(int value, int id ,Element<T> node) {
 
         if (node == null)
             return getNewNode(value);
         else
-            node.setNext(insert(value, node.getNext()));
+            node.setNext(insert(value, id ,node.getNext()));
 
         return node;
     }

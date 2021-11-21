@@ -7,6 +7,9 @@ public class Element<T> {
         this.value = newElement;
     }
 
+    public Element () {
+    }
+
     public T getValue() {
         return value;
     }

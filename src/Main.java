@@ -1,26 +1,42 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
 
-        LinkedList<String> list = new LinkedList<>();
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        list.add("D");
+        Element root = null;
 
-        System.out.println("Tamanho da lista: " + list.getLength());
-        System.out.println("Primeiro: " + list.getFirst().getValue());
-        System.out.println("Ultimo: " + list.getLast().getValue());
+        LinkedList<Integer> car = new LinkedList<>();
+        LinkedList<Integer> time = new LinkedList<>();
 
-        for (int i = 0; i < list.getLength(); i++) {
-            System.out.println(list.getById(i).getValue());
+        System.out.printf("PRIMEIRA RODADA! \n\n");
+
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Número do carro ");
+            time.add(input.nextInt());
+            System.out.println("Marca ");
+            root = time.insert(input.nextInt(), root);
+
         }
 
-        list.remove("A");
-        System.out.println("Removeu o A");
+        Element sorted = time.mergeSort(root);
+        time.printList(sorted);
 
-        for (int i = 0; i < list.getLength(); i++) {
-            System.out.println(list.getById(i).getValue());
+        System.out.printf("SEGUNDA RODADA! \n\n");
+
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Número do carro ");
+            time.add(input.nextInt());
+            System.out.println("Marca ");
+            root = time.insert(input.nextInt(), root);
         }
+
+        Element second = time.mergeSort(root);
+        time.printList(second);
+
+
+
+
 
     }
 }
