@@ -4,10 +4,23 @@ public class Main {
         LinkedList list = new LinkedList();
         list.add("A");
         list.add("B");
-        System.out.println(list.getLength());
+        list.add("C");
+        list.add("D");
+
+        System.out.println("Tamanho da lista: " + list.getLength());
         System.out.println("Primeiro: " + list.getFirst().getValue());
         System.out.println("Ultimo: " + list.getLast().getValue());
-        System.out.println(list.get(1).getValue());
+
+        for (int i = 0; i < list.getLength(); i++) {
+            System.out.println(list.getById(i).getValue());
+        }
+
+        list.remove("A");
+        System.out.println("Removeu o A");
+
+        for (int i = 0; i < list.getLength(); i++) {
+            System.out.println(list.getById(i).getValue());
+        }
 
     }
 }
