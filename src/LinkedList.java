@@ -1,26 +1,26 @@
-public class LinkedList {
+public class LinkedList<T> {
 
-    private Element first;
-    private Element last;
+    private Element<T> first;
+    private Element<T> last;
     private int length;
 
     public LinkedList() {
         this.length = 0;
     }
 
-    public Element getFirst() {
+    public Element<T> getFirst() {
         return first;
     }
 
-    public void setFirst(Element first) {
+    public void setFirst(Element<T> first) {
         this.first = first;
     }
 
-    public Element getLast() {
+    public Element<T> getLast() {
         return last;
     }
 
-    public void setLast(Element last) {
+    public void setLast(Element<T> last) {
         this.last = last;
     }
 
@@ -32,8 +32,8 @@ public class LinkedList {
         this.length = length;
     }
 
-    public void add(String value) {
-        Element newElement = new Element(value);
+    public void add(T value) {
+        Element<T> newElement = new Element<>(value);
         if (this.first == null && this.last == null) {
             this.first = newElement;
         } else {
@@ -43,12 +43,11 @@ public class LinkedList {
         this.length++;
     }
 
-    public void remove(String value) {
-        Element previous = null;
-        Element current = this.first;
+    public void remove(T value) {
+        Element<T> previous = null;
+        Element<T> current = this.first;
         for (int i = 0; i < this.getLength(); i++) {
-
-            if (current.getValue().equalsIgnoreCase(value)) {
+            if (current.getValue().equals(value)) {
                 if (this.length == 1) {
                     this.first = null;
                     this.last = null;

@@ -1,25 +1,25 @@
-public class Element {
+public class Element<T> {
 
-    private String value;
-    private Element next;
+    private T value;
+    private Element<T> next;
 
-    public Element (String newElement) {
+    public Element (T newElement) {
         this.value = newElement;
     }
 
-    public String getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public Element getNext() {
+    public Element<T> getNext() {
         return next;
     }
 
-    public void setNext(Element next) {
+    public void setNext(Element<T> next) {
         this.next = next;
     }
 }
