@@ -1,28 +1,39 @@
 public class Element<T> {
 
-    private T value;
-    private Element<T> next;
+    private T time;
+    private T car;
+    private Element next;
 
-    public Element (T newElement) {
-        this.value = newElement;
+    public Element(T car, T time) {
+        this.car = car;
+        this.time = time;
     }
 
-    public Element () {
+    public <T> Element(Element<T> a) {
     }
 
-    public T getValue() {
-        return value;
+    public T getTime() {
+        return time;
     }
 
-    public void setValue(T value) {
-        this.value = value;
+
+    public void setTime(T time) {
+        this.time = time;
     }
 
-    public Element<T> getNext() {
+    public T getCar() {
+        return car;
+    }
+
+    public void setCar(T car) {
+        this.car = car;
+    }
+
+    public Element getNext() {
         return next;
     }
 
-    public void setNext(Element<T> next) {
+    public void setNext(Element next) {
         this.next = next;
     }
 }
