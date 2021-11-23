@@ -67,7 +67,7 @@ public class LinkedList<T> {
             current = current.getNext();
         }
     }
-
+    //Atribuição da primeira posição, com tratamento de erro para ela nunca ficar fazia
     public Element getById(int id) {
         Element current = this.first;
         for (int i = 0; i < id; i++) {
@@ -78,6 +78,7 @@ public class LinkedList<T> {
         return current;
     }
 
+    //Imprimir a Lista Ordenada
     public void printList(Element node) {
         if (node == null) {
             return;
@@ -116,6 +117,7 @@ public class LinkedList<T> {
         return merge(mergeSort(element), mergeSort(secondHalf));
     }
 
+
     public Element<T> middleNode(Element <T> element) {
         if(element == null) {
             return null;
@@ -132,6 +134,7 @@ public class LinkedList<T> {
         return a;
     }
 
+    //Comparar elementos da Lista
     public Element<T> merge(Element<T> a, Element<T> b) {
         Element<T> temp = new Element(a);
         Element<T> finalList = temp;
