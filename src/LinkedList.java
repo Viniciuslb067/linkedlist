@@ -32,22 +32,22 @@ public class LinkedList<T> {
         this.length = length;
     }
 
-    public void add(T value) {
-        Element<T> newElement = new Element<>(value);
-        if (this.first == null && this.last == null) {
-            this.first = newElement;
-        } else {
-            this.last.setNext(newElement);
-        }
-        this.last = newElement;
-        this.length++;
-    }
+//    public void add(T value) {
+//        Element<T> newElement = new Element<>(value);
+//        if (this.first == null && this.last == null) {
+//            this.first = newElement;
+//        } else {
+//            this.last.setNext(newElement);
+//        }
+//        this.last = newElement;
+//        this.length++;
+//    }
 
     public void remove(T value) {
         Element<T> previous = null;
         Element<T> current = this.first;
         for (int i = 0; i < this.getLength(); i++) {
-            if (current.getValue().equals(value)) {
+            if (current.getCar().equals(value)) {
                 if (this.length == 1) {
                     this.first = null;
                     this.last = null;
@@ -71,6 +71,10 @@ public class LinkedList<T> {
     public Element getById(int id) {
         Element current = this.first;
         for (int i = 0; i < id; i++) {
+            if (current == null) {
+                System.err.println("ERRO!");
+                System.exit(0);
+            }
             if (current.getNext() != null) {
                 current = current.getNext();
             }
@@ -83,29 +87,25 @@ public class LinkedList<T> {
             return;
         }
 
-        System.out.print(node.getValue() + " ");
+        System.out.print(node.getTime() + " " + node.getCar() + " ");
         printList(node.getNext());
     }
 
-    public Element getNewNode(int key) {
-        Element a = new Element();
-        a.setNext(null);
-        a.setValue(key);
-        return a;
-    }
-
-    public Element insert(int value, Element<T> node) {
-
-        if (node == null)
-            return getNewNode(value);
-        else
-            node.setNext(insert(value, node.getNext()));
-
-        return node;
+    public Element<T> insert(T car, T time) {
+        Element newElement = new Element(car, time);
+        if (this.first == null && this.last == null) {
+            this.first = newElement;
+            this.last = newElement;
+        } else {
+            this.last.setNext(newElement);
+            this.last = newElement;
+        }
+        this.length++;
+        return newElement;
     }
 
     public Element<T> mergeSort(Element<T> element) {
-        if(element == null || element.getNext() == null) {
+        if (element.getTime() == null || element.getNext() == null) {
             return element;
         }
 
@@ -116,15 +116,15 @@ public class LinkedList<T> {
         return merge(mergeSort(element), mergeSort(secondHalf));
     }
 
-    public Element<T> middleNode(Element <T> element) {
-        if(element == null) {
+    public Element<T> middleNode(Element<T> element) {
+        if (element == null) {
             return null;
         }
 
         Element<T> a = element;
         Element<T> b = element.getNext();
 
-        while(b != null && b.getNext() != null) {
+        while (b != null && b.getNext() != null) {
             a = a.getNext();
             b = b.getNext().getNext();
         }
@@ -136,8 +136,8 @@ public class LinkedList<T> {
         Element<T> temp = new Element(a);
         Element<T> finalList = temp;
 
-        while(a != null && b != null) {
-            if((Integer) a.getValue() < (Integer) b.getValue()) {
+        while (a != null && b != null) {
+            if ((Integer) a.getTime() < (Integer) b.getTime()) {
                 temp.setNext(a);
                 a = a.getNext();
             } else {

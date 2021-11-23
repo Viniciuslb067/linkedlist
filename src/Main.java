@@ -3,40 +3,33 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
+        LinkedList<Integer> list = new LinkedList<>();
         Element root = null;
 
-        LinkedList<Integer> car = new LinkedList<>();
-        LinkedList<Integer> time = new LinkedList<>();
+        int car;
+        int time;
 
         System.out.printf("PRIMEIRA RODADA! \n\n");
 
         for (int i = 0; i < 2; i++) {
             System.out.println("Número do carro ");
-            time.add(input.nextInt());
+            car = input.nextInt();
             System.out.println("Marca ");
-            root = time.insert(input.nextInt(), root);
+            time = input.nextInt();
+
+            root = list.insert(car,time);
 
         }
 
-        Element sorted = time.mergeSort(root);
-        time.printList(sorted);
-
-        System.out.printf("SEGUNDA RODADA! \n\n");
-
-        for (int i = 0; i < 2; i++) {
-            System.out.println("Número do carro ");
-            time.add(input.nextInt());
-            System.out.println("Marca ");
-            root = time.insert(input.nextInt(), root);
+        for (int i = 0; i < list.getLength(); i++) {
+            System.out.println("Carro: " + list.getById(i).getCar() + " Tempo: " + list.getById(i).getTime());
         }
 
-        Element second = time.mergeSort(root);
-        time.printList(second);
+        Element sorted = list.mergeSort(root);
+        list.printList(sorted);
+        System.out.println();
 
-
-
-
+        System.out.printf("SEGUNDA RODADA! \n");
 
     }
 }
